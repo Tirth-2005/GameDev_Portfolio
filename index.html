@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameDev Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+<body>
+  <script src="tools-physics.js" defer></script>
+  <!-- Header -->
+  <header>
+  <div class="nav">
+    <!-- LEFT -->
+    <div class="nav-left">
+      <div class="logo-icon">
+        <i class="fa-solid fa-gamepad"></i>
+      </div>
+      <div class="logo-text">GameDev Portfolio</div>
+    </div>
+
+    <!-- RIGHT -->
+    <nav class="nav-right">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  </header>
+
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner fade-in">
+        <!-- LEFT: text -->
+        <div class="hero-left">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Available for new projects
+          </div>
+          <h1 class="hero-title">
+            Crafting <span>Immersive</span><br />
+            Gaming Experiences
+          </h1>
+          <p class="hero-text">
+            Unity game developer with experience in C#, gameplay programming, and web development.
+            Passionate about creating memorable games and interactive experiences across platforms.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <i class="fa-solid fa-eye"></i>
+              View My Work
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i class="fa-solid fa-envelope"></i>
+              Get in Touch
+            </a>
+          </div>
+
+          <div class="hero-links">
+            <span>Connect</span>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+
+        <!-- RIGHT: skill cards + stats -->
+        <div class="hero-right">
+          <div class="hero-tag-grid">
+            <div class="mini-card">
+              <h4>Unity Developer</h4>
+              <p>Creating immersive 2D/3D games with polished mechanics and engaging gameplay.</p>
+            </div>
+            <div class="mini-card">
+              <h4>C# &amp; Python</h4>
+              <p>Writing clean, efficient code with strong OOP principles and design patterns.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Web Development</h4>
+              <p>Building modern web apps with responsive and interactive interfaces.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Creative Problem Solver</h4>
+              <p>Turning complex challenges into elegant, player‑friendly solutions.</p>
+            </div>
+          </div>
+
+          <div class="hero-stat-row">
+            <div class="hero-stat">
+              <div class="hero-stat-number">3+</div>
+              <div class="hero-stat-label">Years of Experience</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">10+</div>
+              <div class="hero-stat-label">Projects Completed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container fade-in">
+        <h2 class="section-heading">Skills &amp; Expertise</h2>
+        <p class="section-subtitle">
+          Technologies and tools used to bring ideas to life.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Game Development</h3>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Unity Engine</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="90"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-code"></i>
+                <span>C#</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="85"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-brain"></i>
+                <span>Game Design</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="80"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-cube"></i>
+                <span>3D/2D Graphics</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="75"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Programming</h3>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-brands fa-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="80"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-code-branch"></i>
+                <span>Object‑Oriented Programming</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="85"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-database"></i>
+                <span>Data Structures</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="75"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-brands fa-git-alt"></i>
+                <span>Git &amp; Version Control</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="80"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web Development</h3>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-brands fa-html5"></i>
+                <span>HTML/CSS</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="85"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-brands fa-js-square"></i>
+                <span>JavaScript / TypeScript</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="75"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-brands fa-react"></i>
+                <span>React</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="70"></div>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label-line">
+                <i class="fa-solid fa-mobile-alt"></i>
+                <span>Responsive Design</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" data-percent="80"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card fade-in">
+          <h3>Tools &amp; Software</h3>
+          <div class="skill-tag-row">
+            <div class="tool-ball" data-tool="unity"><i class="fa-brands fa-unity"></i></div>
+            <!-- <div class="tool-ball" data-tool="visual-studio"><i class="fa-brands fa-visual-studio"></i></div> -->
+            <!-- <div class="tool-ball" data-tool="vs-code"><i class="fa-brands fa-visual-studio-code"></i></div> -->
+            <!-- <div class="tool-ball" data-tool="blender"><i class="fa-brands fa-blender"></i></div> -->
+            <div class="tool-ball" data-tool="git"><i class="fa-brands fa-git-alt"></i></div>
+            <div class="tool-ball" data-tool="github"><i class="fa-brands fa-github"></i></div>
+            <div class="tool-ball" data-tool="figma"><i class="fa-brands fa-figma"></i></div>
+            <div class="tool-ball" data-tool="trello"><i class="fa-brands fa-trello"></i></div>
+            <div class="tool-ball" data-tool="discord"><i class="fa-brands fa-discord"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects">
+      <div class="container fade-in">
+        <h2 class="section-heading">Featured Projects</h2>
+        <p class="section-subtitle">
+          A collection of games and applications built with passion and precision.
+        </p>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-thumb">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Space Odyssey</h3>
+              <p class="project-text">
+                A 3D space exploration game with procedural planets, resource
+                management, and cinematic combat encounters.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">3D</span>
+                <span class="project-tag">Procedural Generation</span>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="project-btn primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+                <a href="#" class="project-btn">
+                  <i class="fa-brands fa-github"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-thumb thumb-green-blue">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Dungeon Crawler RPG</h3>
+              <p class="project-text">
+                A roguelike dungeon crawler with turn‑based combat, character
+                progression, and randomly generated levels.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">2D</span>
+                <span class="project-tag">AI Systems</span>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="project-btn primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+                <a href="#" class="project-btn">
+                  <i class="fa-brands fa-github"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-thumb thumb-cyan-indigo">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Puzzle Master</h3>
+              <p class="project-text">
+                A puzzle game with physics‑based mechanics and 100+ handcrafted levels,
+                focusing on clever, satisfying solutions.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">Physics</span>
+                <span class="project-tag">Level Design</span>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="project-btn primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+                <a href="#" class="project-btn">
+                  <i class="fa-brands fa-github"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <div class="project-thumb thumb-green">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Portfolio Dashboard</h3>
+              <p class="project-text">
+                A web application for tracking game development progress with analytics
+                and project management tools.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">API</span>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="project-btn primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+                <a href="#" class="project-btn">
+                  <i class="fa-brands fa-github"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="view-all">
+          <a href="#" class="view-all-btn">
+            <i class="fa-brands fa-github"></i>
+            View All Projects on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container fade-in">
+        <h2 class="section-heading">About Me</h2>
+        <p class="section-subtitle">
+          Passionate game developer on a mission to create worlds that inspire and entertain.
+        </p>
+
+        <div class="about-layout">
+          <div class="about-text">
+            <p>
+              Hey there! I am a Unity game developer with a deep passion for crafting
+              interactive experiences that captivate players. With experience in C#, Python,
+              and web development, the goal is to blend strong technical skills with
+              player‑focused design.
+            </p>
+            <p>
+              From gameplay mechanics and AI systems to UI/UX and performance optimization,
+              every aspect of the development process is exciting. The long‑term aim is to
+              contribute to games that push creative boundaries and deliver memorable moments.
+            </p>
+            <p>
+              When not coding, time is spent exploring new releases, studying game design
+              theory, or experimenting with new tools and technologies.
+            </p>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Game Prototypes</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Passion &amp; Drive</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container fade-in">
+        <h2 class="section-heading">Let’s Connect</h2>
+        <p class="section-subtitle">
+          Have a project in mind or want to collaborate? Reach out anytime.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-info-col">
+            <div class="contact-card">
+              <h4>Email</h4>
+              <p>tirthpanchal2805@gmail.com</p>
+            </div>
+            <div class="contact-card">
+              <h4>Location</h4>
+              <p>Available in India</p>
+            </div>
+            <div class="contact-card">
+              <h4>Response Time</h4>
+              <p>Within 24 hours</p>
+            </div>
+            <div class="contact-card quote-card">
+              <p>“Great games are born from great collaboration.”<br />– Let’s build something incredible.</p>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="contact-row">
+              <div class="field-group">
+                <label for="name">Your Name</label>
+                <input id="name" type="text" placeholder="Tirth Panchal" required />
+              </div>
+              <div class="field-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="tirthpanchal2805@gmail.com" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell me about your project or idea..." required></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit">
+              <i class="fa-regular fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 GameDev Portfolio. Built with passion for games.</p>
+    <div class="footer-social">
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="#"><i class="fa-brands fa-itch-io"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Intersection observer for fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          if (entry.target.id === 'skills') {
+            // animate skill bars when skills section appears
+            document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+              const percent = bar.getAttribute('data-percent');
+              bar.style.width = percent + '%';
+            });
+
+            // animate pill tags: all together infinitely
+            const skillTagRow = document.querySelector('.skill-tag-row');
+            skillTagRow.classList.add('all');
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Simple demo contact form handler
+  </script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase config -->
+  <script type="module" src="firebase.js"></script>
+
+</body>
+</html>
