@@ -41,7 +41,7 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   z-index: 20;
   background: rgba(5, 5, 11, 0.92);
   backdrop-filter: blur(18px);
@@ -818,7 +818,7 @@ footer {
 
 .skill-tag-row {
   position: relative;
-  min-height: 180px;
+  min-height: 380px;
   background: radial-gradient(circle at top, #020617, #000);
   border-radius: 16px;
   overflow: hidden;
@@ -842,10 +842,57 @@ footer {
   transition: box-shadow 0.2s ease;
 }
 
+.tools-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.tool-score {
+  font-size: 0.9rem;
+  color: #38bdf8;
+}
+
 .tool-ball:active {
   cursor: grabbing;
   box-shadow: 0 20px 45px rgba(168,85,247,0.6);
 }
+
+
+.basket {
+  position: absolute;
+  top: 90px;              /* ⬇ lower than ceiling */
+  right: -6px;            /* ⬅ attach to wall */
+  width: 90px;
+  height: 70px;
+  pointer-events: none;
+}
+
+.basket-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 86px;              /* ⬆ bigger */
+  height: 18px;             /* ⬆ thicker */
+  border-radius: 50%;
+  border: 4px solid #f97316;
+  background: transparent;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+}
+
+.basket-net {
+  position: absolute;
+  top: 16px;                     /* starts under ring */
+  left: 6px;                     /* center align */
+  width: 74px;                   /* ⬆ wider net */
+  height: 44px;
+  border: 2px dashed rgba(249, 115, 22, 0.55);
+  border-top: none;
+  border-radius: 0 0 60% 60%;
+  pointer-events: none;
+}
+
 
 
 @media (max-width: 900px) {

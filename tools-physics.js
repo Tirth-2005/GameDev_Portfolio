@@ -1,15 +1,20 @@
 /* ======================================
-   Balloon-like Tool Ball Physics + Collision
+   Balloon-like Tool Ball Physics + Basket Scoring
 ====================================== */
 
+let score = 0;
+const scoreEl = document.getElementById("toolScore");
+
 document.addEventListener('DOMContentLoaded', () => {
+  const ring = document.querySelector('.basket-ring');
   const balls = [...document.querySelectorAll('.tool-ball')];
   const container = document.querySelector('.skill-tag-row');
+  const basket = document.querySelector('.basket');
 
-  if (!container || balls.length === 0) return;
+  if (!container || balls.length === 0 || !basket) return;
 
-  const gravity = 0.12;          // very low gravity
-  const buoyancy = -0.08;        // upward balloon force
+  const gravity = 0.12;
+  const buoyancy = -0.08;
   const friction = 0.995;
   const bounce = 0.9;
   const driftStrength = 0.03;
@@ -19,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     radius: ball.offsetWidth / 2,
     pos: {
       x: Math.random() * (container.clientWidth - 60),
-      y: Math.random() * (container.clientHeight - 60)
+      y: container.clientHeight - 80
     },
     vel: {
       x: (Math.random() - 0.5) * 1.2,
@@ -27,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     drag: false,
     lastPointer: { x: 0, y: 0 },
-    driftOffset: Math.random() * 1000
+    driftOffset: Math.random() * 1000,
+    scored: false // 🆕 score lock
   }));
 
   /* ================= UPDATE LOOP ================= */
@@ -35,14 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function update() {
     ballData.forEach(ball => {
       if (!ball.drag) {
-        // Balloon physics
         ball.vel.y += gravity + buoyancy;
         ball.vel.x += Math.sin(Date.now() * 0.001 + ball.driftOffset) * driftStrength;
 
         ball.pos.x += ball.vel.x;
         ball.pos.y += ball.vel.y;
 
-        // Bounds
         const maxX = container.clientWidth - ball.radius * 2;
         const maxY = container.clientHeight - ball.radius * 2;
 
@@ -51,25 +55,65 @@ document.addEventListener('DOMContentLoaded', () => {
           ball.pos.x = Math.max(0, Math.min(maxX, ball.pos.x));
         }
 
-        if (ball.pos.y <= 0) {
+        const ceilingOffset = 20;
+        if (ball.pos.y <= ceilingOffset) {
           ball.vel.y *= -bounce;
-          ball.pos.y = 0;
+          ball.pos.y = ceilingOffset;
         }
 
         if (ball.pos.y >= maxY) {
           ball.vel.y *= -bounce * 0.6;
           ball.pos.y = maxY;
+          ball.scored = false; // reset score lock
         }
 
         ball.vel.x *= friction;
         ball.vel.y *= friction;
       }
+      
+      handleRingCollision(ball);
+      checkBasket(ball);
     });
 
     handleCollisions();
     render();
     requestAnimationFrame(update);
   }
+
+  /* ================= BASKET CHECK ================= */
+
+  function checkBasket(ball) {
+    if (!basket || !ring) return;
+
+    const basketRect = basket.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    const hoopX = basketRect.left - containerRect.left;
+    const hoopY = basketRect.top - containerRect.top;
+
+    const hoopWidth = ring.offsetWidth;
+    const hoopHeight = basketRect.height;
+
+    const ballCenterX = ball.pos.x + ball.radius;
+    const ballTopY = ball.pos.y;
+
+    const insideHoop =
+      ballCenterX > hoopX + 10 &&
+      ballCenterX < hoopX + hoopWidth - 10 &&
+      ballTopY > hoopY &&
+      ballTopY < hoopY + hoopHeight;
+
+    // ✅ Score ONLY ONCE per entry
+    if (insideHoop && !ball.scored && ball.vel.y > 0) {
+      ball.scored = true;
+      score++;
+      scoreEl.textContent = score;
+
+      // 🎯 Add downward momentum (ball drops out)
+      ball.vel.y += 3;
+    }
+  }
+
 
   /* ================= COLLISIONS ================= */
 
@@ -96,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
           b.pos.x += pushX;
           b.pos.y += pushY;
 
-          // Exchange velocity
           const tempX = a.vel.x;
           const tempY = a.vel.y;
           a.vel.x = b.vel.x * 0.85;
@@ -107,6 +150,54 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+function handleRingCollision(ball) {
+  if (!basket || !ring) return;
+
+  const ringRect = ring.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const ringX = ringRect.left - containerRect.left;
+  const ringY = ringRect.top - containerRect.top;
+  const ringW = ringRect.width;
+  const ringH = ringRect.height;
+
+  const ballCenterX = ball.pos.x + ball.radius;
+  const ballBottomY = ball.pos.y + ball.radius * 2;
+
+  // ---- RIM SETTINGS ----
+  const rimThickness = ringH;      // collision zone
+  const rimPadding = 10;           // opening gap from sides
+
+  const leftRim = ringX;
+  const rightRim = ringX + ringW;
+
+  const holeLeft = ringX + rimPadding;
+  const holeRight = ringX + ringW - rimPadding;
+
+  const isAboveRim =
+    ballBottomY >= ringY &&
+    ballBottomY <= ringY + rimThickness;
+
+  const isFalling = ball.vel.y > 0;
+
+  const hitLeftRim =
+    ballCenterX < holeLeft &&
+    ballCenterX > leftRim;
+
+  const hitRightRim =
+    ballCenterX > holeRight &&
+    ballCenterX < rightRim;
+
+  // 🟠 COLLIDE ONLY WITH RIM EDGES
+  if (isAboveRim && isFalling && (hitLeftRim || hitRightRim)) {
+    ball.pos.y = ringY - ball.radius * 2;
+    ball.vel.y *= -0.75;
+    ball.vel.x += hitLeftRim ? -0.6 : 0.6;
+  }
+}
+
+
 
   /* ================= RENDER ================= */
 
