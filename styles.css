@@ -81,6 +81,13 @@ header {
   font-size: 1rem;
 }
 
+.tool-icon-img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
+
 .nav-right ul {
   list-style: none;
   display: flex;
