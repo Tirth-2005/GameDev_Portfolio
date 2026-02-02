@@ -1,17 +1,12 @@
 /* ======================================
-   Balloon-like Tool Ball Physics + Basket Scoring
+   Balloon-like Tool Ball Physics
 ====================================== */
 
-let score = 0;
-const scoreEl = document.getElementById("toolScore");
-
 document.addEventListener('DOMContentLoaded', () => {
-  const ring = document.querySelector('.basket-ring');
   const balls = [...document.querySelectorAll('.tool-ball')];
   const container = document.querySelector('.skill-tag-row');
-  const basket = document.querySelector('.basket');
 
-  if (!container || balls.length === 0 || !basket) return;
+  if (!container || balls.length === 0) return;
 
   const gravity = 0.12;
   const buoyancy = -0.08;
@@ -32,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     drag: false,
     lastPointer: { x: 0, y: 0 },
-    driftOffset: Math.random() * 1000,
-    scored: false // 🆕 score lock
+    driftOffset: Math.random() * 1000
   }));
 
   /* ================= UPDATE LOOP ================= */
@@ -64,56 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ball.pos.y >= maxY) {
           ball.vel.y *= -bounce * 0.6;
           ball.pos.y = maxY;
-          ball.scored = false; // reset score lock
         }
 
         ball.vel.x *= friction;
         ball.vel.y *= friction;
       }
       
-      handleRingCollision(ball);
-      checkBasket(ball);
+
     });
 
     handleCollisions();
     render();
     requestAnimationFrame(update);
   }
-
-  /* ================= BASKET CHECK ================= */
-
-  function checkBasket(ball) {
-    if (!basket || !ring) return;
-
-    const basketRect = basket.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    const hoopX = basketRect.left - containerRect.left;
-    const hoopY = basketRect.top - containerRect.top;
-
-    const hoopWidth = ring.offsetWidth;
-    const hoopHeight = basketRect.height;
-
-    const ballCenterX = ball.pos.x + ball.radius;
-    const ballTopY = ball.pos.y;
-
-    const insideHoop =
-      ballCenterX > hoopX + 10 &&
-      ballCenterX < hoopX + hoopWidth - 10 &&
-      ballTopY > hoopY &&
-      ballTopY < hoopY + hoopHeight;
-
-    // ✅ Score ONLY ONCE per entry
-    if (insideHoop && !ball.scored && ball.vel.y > 0) {
-      ball.scored = true;
-      score++;
-      scoreEl.textContent = score;
-
-      // 🎯 Add downward momentum (ball drops out)
-      ball.vel.y += 3;
-    }
-  }
-
 
   /* ================= COLLISIONS ================= */
 
